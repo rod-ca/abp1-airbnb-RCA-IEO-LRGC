@@ -1,0 +1,11 @@
+"Variable","lim_inf.25%","lim_sup.75%","n_atipicos","pct_atipicos"
+"NumeroResenas",-35,69,285,7.27
+"NumeroNochesReservadas",-1.5,10.5,230,5.75
+"PrecioTotalReserva",-6120,17240,228,5.7
+"NumeroHabitaciones",0.5,4.5,131,3.28
+"PrecioPorNoche",-813.8,3116.2,88,2.2
+"CalificacionPromedio",3.8,5.4,55,1.45
+"TasaRespuestaAnfitrion",63,111,28,0.73
+"NumeroHuespedes",0,8,18,0.45
+"TamanoM2",8.5,116.5,5,0.13
+"CostoLimpieza",-70,810,2,0.05
