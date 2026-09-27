@@ -384,7 +384,7 @@ Formada por el **desempeño del anfitrión**:
 ::: {.column width="45%"}
 **Repositorio**
 
-`github.com/tu-usuario/abp1-airbnb`
+`https://github.com/rod-ca/abp1-airbnb-RCA-IEO-LRGC`
 
 - `renv.lock` — entorno reproducible
 - `R/` — pipeline modular
