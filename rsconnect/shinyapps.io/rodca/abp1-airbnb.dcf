@@ -1,0 +1,10 @@
+name: abp1-airbnb
+title:
+username: rodca
+account: rodca
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 18021049
+bundleId: 12610679
+url: https://rodca.shinyapps.io/abp1-airbnb/
+version: 1

@@ -1,0 +1,120 @@
+/*-- scss:defaults --*/
+// Colores base
+$body-bg: #e87b75; // Color de respaldo (por si el gradiente falla)
+$body-color: #ffffff; // Texto blanco para contrastar con el fondo
+$link-color: #ffffff; // Enlaces en blanco
+$presentation-heading-color: #ffffff; // Encabezados en blanco
+$presentation-font-size-root: 30px;
+
+// Tipografía (usando una fuente sans-serif limpia como en la imagen)
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/*-- scss:rules --*/
+// 1. Fondo degradado y textura de grano
+.reveal .slide-background {
+  // Degradado radial cálido inspirado en la imagen
+  background: radial-gradient(circle at 10% 20%, #fc9305 0%, #A5B77E 40%, #81C1A1 80%, #3bcfd4 100%) !important;
+  background-size: cover !important;
+}
+
+// Añadir textura de ruido/grano sutil sobre el fondo
+.reveal .slide-background::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  // SVG en línea para crear el efecto de ruido
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+// 2. Estilos generales de texto
+.reveal {
+  color: #ffffff;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  text-transform: none;
+}
+
+// Título principal grande (como en la diapositiva)
+.reveal h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+// 3. Estilos de Tablas (Crucial para que se vea como la imagen)
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.8em; // Texto un poco más pequeño en tablas
+}
+
+.reveal table th, .reveal table td {
+  border: 1px solid rgba(255, 255, 255, 0.5); // Borde blanco semi-transparente
+  padding: 0.6rem 1rem;
+  text-align: left;
+  background: transparent !important; // Fondo transparente
+  color: #ffffff;
+}
+
+.reveal table th {
+  font-weight: 700;
+}
+
+// 4. Ajustes de elementos secundarios
+.reveal .slide-number { 
+  color: #ffffff; 
+  opacity: 0.7;
+}
+
+.reveal .footer { 
+  font-size: .55em; 
+  color: rgba(255, 255, 255, 0.8); 
+}
+
+.reveal section img { 
+  border-radius: 6px; 
+}
+
+.reveal blockquote {
+  border-left: 4px solid rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  font-style: italic;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.1); // Fondo sutil oscuro para legibilidad
+  border-radius: 0 6px 6px 0;
+}
+
+.reveal .callout { 
+  font-size: .85em; 
+}
+
+// 5. Tarjetas KPI (Adaptadas al nuevo tema)
+.kpi {
+  display: flex; 
+  gap: 1rem; 
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.kpi > div {
+  background: rgba(255, 255, 255, 0.15); // Fondo blanco semi-transparente
+  border-left: 4px solid #ffffff; // Borde blanco
+  padding: .8rem 1.2rem;
+  border-radius: 6px;
+  min-width: 140px;
+  text-align: center;
+  backdrop-filter: blur(5px); // Efecto de desenfoque moderno
+}
+
+.kpi b { 
+  display: block; 
+  font-size: 1.6em; 
+  color: #ffffff; 
+}

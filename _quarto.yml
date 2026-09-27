@@ -1,0 +1,17 @@
+project:
+  type: default
+  output-dir: _site
+  resources:
+    - data/
+    - outputs/
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto
+
+format:
+  html:
+    theme: cosmo
+    toc: true

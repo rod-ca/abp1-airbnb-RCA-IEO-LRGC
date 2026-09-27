@@ -1,0 +1,80 @@
+---
+title: "Airbnb México — Dashboard exploratorio"
+format:
+  dashboard:
+    orientation: columns
+    theme: cosmo
+    logo: ""
+    scrolling: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+source("R/03_graficos.R")
+library(crosstalk)
+```
+
+## Column {data-width=350}
+
+### Filtros
+
+```{r}
+sd <- SharedData$new(datos, key = ~ID_Reserva)
+filter_checkbox("ciudad", "Ciudad", sd, ~Ciudad, inline = TRUE)
+filter_checkbox("tipo", "Tipo de alojamiento", sd, ~TipoAlojamiento, inline = TRUE)
+filter_slider("precio", "Precio por noche (MXN)", sd,
+              ~PrecioPorNoche, width = "100%")
+```
+
+### KPIs
+
+```{r}
+renderText({
+  paste0("Reservas: ", nrow(sd$data(withSelection = TRUE)))
+})
+```
+
+```{r}
+renderText({
+  d <- sd$data(withSelection = TRUE)
+  paste0("Precio medio: $", round(mean(d$PrecioPorNoche, na.rm = TRUE)))
+})
+```
+
+## Column {data-width=650}
+
+### Precio por ciudad
+
+```{r}
+renderPlotly({
+  d <- sd$data(withSelection = TRUE)
+  ggplotly(
+    ggplot(d, aes(Ciudad, PrecioPorNoche, fill = Ciudad)) +
+      geom_boxplot(show.legend = FALSE, outlier.color = "red", alpha = .7) +
+      theme_minimal() +
+      labs(x = NULL, y = "MXN")
+  )
+})
+```
+
+### Heatmap ciudad × tipo
+
+```{r}
+renderPlotly({
+  d <- sd$data(withSelection = TRUE) %>%
+    group_by(Ciudad, TipoAlojamiento) %>%
+    summarise(p = mean(PrecioPorNoche, na.rm = TRUE), .groups = "drop")
+  ggplotly(
+    ggplot(d, aes(TipoAlojamiento, Ciudad, fill = p)) +
+      geom_tile(color = "white") +
+      geom_text(aes(label = round(p)), size = 3) +
+      scale_fill_gradient(low = "#FEE0D2", high = "#A50F15") +
+      theme_minimal() +
+      labs(x = NULL, y = NULL, fill = "MXN")
+  )
+})
+```

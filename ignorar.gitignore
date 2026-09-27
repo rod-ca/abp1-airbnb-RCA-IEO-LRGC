@@ -1,0 +1,24 @@
+# R and RStudio
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+renv/local/
+renv/cache/
+renv/staging/
+
+# Quarto
+_site/
+.quarto/
+*_files/
+.cache/
+
+# Datos y salidas generadas
+data/*.rds
+outputs/figuras/*.png
+outputs/tablas/*.csv
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
